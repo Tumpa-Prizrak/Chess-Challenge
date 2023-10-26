@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using ChessChallenge.API;
 
-public class MyBot : IChessBot
+public class FirstBot : IChessBot
 {
     public struct EvalMove
     {

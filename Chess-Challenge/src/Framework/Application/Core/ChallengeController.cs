@@ -19,7 +19,8 @@ namespace ChessChallenge.Application
         {
             Human,
             MyBot,
-            EvilBot
+            EvilBot,
+            FirstBot
         }
 
         // Game state
@@ -191,7 +192,7 @@ namespace ChessChallenge.Application
             // Board perspective
             if (PlayerWhite.IsHuman || PlayerBlack.IsHuman)
             {
-                boardUI.SetPerspective(PlayerWhite.IsHuman);
+                boardUI.SetPerspective(!PlayerWhite.IsHuman);
                 HumanWasWhiteLastGame = PlayerWhite.IsHuman;
             }
             else if (PlayerWhite.Bot is MyBot && PlayerBlack.Bot is MyBot)
@@ -210,6 +211,7 @@ namespace ChessChallenge.Application
             {
                 PlayerType.MyBot => new ChessPlayer(new MyBot(), type, GameDurationMilliseconds),
                 PlayerType.EvilBot => new ChessPlayer(new EvilBot(), type, GameDurationMilliseconds),
+                PlayerType.FirstBot => new ChessPlayer(new FirstBot(), type, GameDurationMilliseconds),
                 _ => new ChessPlayer(new HumanPlayer(boardUI), type)
             };
         }
