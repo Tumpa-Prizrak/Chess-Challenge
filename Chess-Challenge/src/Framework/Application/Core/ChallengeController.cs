@@ -1,5 +1,4 @@
 ﻿using ChessChallenge.Chess;
-using ChessChallenge.Example;
 using Raylib_cs;
 using System;
 using System.IO;
@@ -19,8 +18,8 @@ namespace ChessChallenge.Application
         {
             Human,
             MyBot,
-            EvilBot,
-            FirstBot
+            FirstBot,
+            PreviousBot
         }
 
         // Game state
@@ -192,7 +191,7 @@ namespace ChessChallenge.Application
             // Board perspective
             if (PlayerWhite.IsHuman || PlayerBlack.IsHuman)
             {
-                boardUI.SetPerspective(!PlayerWhite.IsHuman);
+                boardUI.SetPerspective(PlayerWhite.IsHuman);
                 HumanWasWhiteLastGame = PlayerWhite.IsHuman;
             }
             else if (PlayerWhite.Bot is MyBot && PlayerBlack.Bot is MyBot)
@@ -210,8 +209,8 @@ namespace ChessChallenge.Application
             return type switch
             {
                 PlayerType.MyBot => new ChessPlayer(new MyBot(), type, GameDurationMilliseconds),
-                PlayerType.EvilBot => new ChessPlayer(new EvilBot(), type, GameDurationMilliseconds),
                 PlayerType.FirstBot => new ChessPlayer(new FirstBot(), type, GameDurationMilliseconds),
+                PlayerType.PreviousBot => new ChessPlayer(new PreviousBot(), type, GameDurationMilliseconds),
                 _ => new ChessPlayer(new HumanPlayer(boardUI), type)
             };
         }

@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using ChessChallenge.API;
 using ChessChallenge.Application;
 
-public class MyBot : IChessBot
+public class PreviousBot : IChessBot
 {
     // --------- Settings ---------
 

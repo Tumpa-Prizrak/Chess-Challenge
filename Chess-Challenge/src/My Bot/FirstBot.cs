@@ -42,7 +42,6 @@ public class FirstBot : IChessBot
     
     public Move Think(Board board, Timer timer)
     {
-        Console.WriteLine(Evaluate(board));
         return Search(board, 3).Move;
     }
 
